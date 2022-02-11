@@ -35,6 +35,20 @@ public class ProductoServiceImp implements ProductoService{
 
     @Override
     public Producto save(Producto producto) {
+        Double precio=producto.getPrecio();
+        int cantidad=producto.getCantidad();
+        Double subtotal1=precio*cantidad;
+        Double compra=0.0;
+        if(compra>50) {
+            Double descuento=subtotal1*0.10;
+            Double iva=subtotal1*0.12;
+            compra=(subtotal1-descuento+iva);
+        }else {
+            Double iva=subtotal1*0.12;
+            compra=(subtotal1+iva);
+        }
+        producto.setCompra(compra);
+
         return productoRepository.save(producto);
     }
 

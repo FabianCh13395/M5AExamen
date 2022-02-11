@@ -17,17 +17,24 @@ public class Producto {
 @NotBlank
     private String descripcion;
     @Min(value = 0,message = "El campo precio tiene que ser mayor a 0")
-    @NotBlank
+    @Column(nullable = false)
     private Double precio;
-    @NotBlank
+
     @Min(value = 0,message = "El campo cantidad tiene que ser mayor a 0")
+    @Column(nullable = false)
     private int cantidad;
 
 
-
+@Column(nullable = false)
     private Double compra;
 
+    public Double getCompra() {
+        return compra;
+    }
 
+    public void setCompra(Double compra) {
+        this.compra = compra;
+    }
 
     public long getCodigo() {
         return codigo;
